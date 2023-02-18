@@ -1,0 +1,150 @@
+<html>
+  <head>
+    <title>classify2d</title>
+    <meta charset="UTF-8" />
+    <script src="dist/main.js"></script>
+
+    <style type="text/css">
+      body {
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        color: #333;
+        padding: 20px;
+      }
+      canvas {
+        border: 1px solid #555;
+      }
+      .pane {
+        width: 520px;
+        display: inline-block;
+        vertical-align: top;
+      }
+      input[type="submit"] {
+        margin: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    feel free to click any button!
+    <br />
+    you can reset by reloading this page
+    <br />
+    <br />
+    <div class="panes">
+      <div class="pane">
+        <canvas id="net_canvas" width="500" height="500">
+          Browser not supported for Canvas. Get a real browser.
+        </canvas>
+        <br />
+        change neural network and restart learning
+        <br />
+        <input
+          id="buttonnet1"
+          type="submit"
+          value="add new layer at the last"
+          onclick="pushNewLayer();"
+          style="width: 200px; height: 30px"
+        />
+        <input
+          id="button-delete-layer"
+          type="submit"
+          value="delete the last layer"
+          onclick="popLastLayer();"
+          style="width: 200px; height: 30px"
+        />
+        <br />
+        <br />
+        select which layer to edit perceptrons
+        <input
+          id="button-move-left"
+          type="submit"
+          value="◀"
+          onclick="moveSelectedToLeft();"
+          style="width: 30px; height: 30px"
+        />
+        <input
+          id="button-move-right"
+          type="submit"
+          value="▶"
+          onclick="moveSelectedToRight();"
+          style="width: 30px; height: 30px"
+        />
+        <br />
+        <input
+          id="button-add-perceptron"
+          type="submit"
+          value="add perceptron"
+          onclick="addPerceptronToSelectedLayer();"
+          style="width: 200px; height: 30px"
+        />
+        <input
+          id="button-delete-perceptron"
+          type="submit"
+          value="delete perceptron"
+          onclick="deletePerceptronFromSelectedLayer();"
+          style="width: 200px; height: 30px"
+        />
+      </div>
+      <div class="pane">
+        <canvas id="data_canvas" width="500" height="500">
+          Browser not supported for Canvas. Get a real browser.
+        </canvas>
+        <br />
+        select input data
+        <br />
+        <input
+          id="buttondata1"
+          type="submit"
+          value="simple"
+          onclick="simpleData();"
+          style="width: 100px; height: 30px"
+        />
+        <input
+          id="buttondata2"
+          type="submit"
+          value="circle"
+          onclick="circleData();"
+          style="width: 100px; height: 30px"
+        />
+        <input
+          id="buttondata3"
+          type="submit"
+          value="spiral"
+          onclick="spiralData();"
+          style="width: 100px; height: 30px"
+        />
+        <input
+          id="buttondata4"
+          type="submit"
+          value="random"
+          onclick="randomData();"
+          style="width: 100px; height: 30px"
+        />
+        <br />
+        <br />
+        you can also edit input data by click in the above canvas
+        <br />
+        click → add red
+        <br />
+        shift + click → add green
+        <br />
+        control or alt or option + click → delete the nearest data
+        <br />
+        <br />
+        <input
+          id="buttonneuralnet1"
+          type="submit"
+          value="reset leaning"
+          onclick="loadNeuralNet();"
+          style="width: 150px; height: 30px"
+        />
+        <input
+          id="buttonstoptrain"
+          type="submit"
+          onclick="changeIsTraining();"
+          style="width: 150px; height: 30px"
+        />
+      </div>
+    </div>
+    <div id="showingloss">loss</div>
+  </body>
+</html>
